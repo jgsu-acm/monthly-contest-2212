@@ -23,7 +23,7 @@ int main()
             if(pre==m)
             {
                 reverse(w.begin(), w.begin()+i+1);
-                swap(w[i], w.back()); // 最小一定不等于最大，放心交换
+                swap(w[i], w.back());
                 break;
             }
         }

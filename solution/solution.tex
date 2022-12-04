@@ -9,7 +9,7 @@
 \addsolution{Quento}{AgOH}{dfs}
 \addsolution{地铁 \textasciitilde 地铁 \textasciitilde}{Algor}{图的连通性}
 \addsolution{数列 \textasciitilde 数列 \textasciitilde}{Algor}{签到}
-\addsolution{布丁 \textasciitilde 布丁 \textasciitilde}{Algor}{贪心}
+\addsolution{布丁 \textasciitilde 布丁 \textasciitilde}{gxust}{贪心}
 \addsolution{排队 \textasciitilde 排队 \textasciitilde}{Algor}{逆序对}
 \addsolution{背包 \textasciitilde 背包 \textasciitilde}{Algor}{构造}
 \addsolution{Guesslang}{Zxilly}{模拟}
@@ -33,9 +33,10 @@
 
 无向非连通图上判断给定两点是否连通。
 
-1.并查集做法：运用并查集在读入数据的同时 $merge(u_1,v_i)$ 最后只需判断 $find(s) == find(t)$ 即可。
-
-2.dfs做法：链式前向星或者邻接表存图，从给定两点中的任意一点开始dfs，同时记录 $vis$ 数组，最后只要判断另一点的 $vis$ 值是否为 $true$ 即可。
+\begin{enumerate}
+    \item 并查集做法：运用并查集在读入数据的同时 \lstinline{merge(u_1,v_i)}，最后只需判断 \lstinline{find(s) == find(t)} 即可。
+    \item dfs 做法：链式前向星或者邻接表存图，从给定两点中的任意一点开始dfs，同时记录 \texttt{vis} 数组，最后只要判断另一点的 \texttt{vis} 值是否为 \texttt{true} 即可。
+\end{enumerate}
 
 \section*{标程}
 
@@ -62,9 +63,9 @@
 \makesolution
 \section*{做法}
 
-给你一个数列求逆序对的数量。当 $i < j \cap a_i > a_j$ 时 $\{i,j\}$ 称为一个逆序对。
+给你一个数列求逆序对的数量。当 $i < j \land a_i > a_j$ 时 $\{i,j\}$ 称为一个逆序对。
 
-归并排序模板简单改动，仅需在 $merge()$ 的时候判断当前是否产生逆序对。
+归并排序模板简单改动，仅需在 \lstinline{merge} 的时候判断当前是否产生逆序对。
 
 \section*{标程}
 
@@ -77,13 +78,13 @@
 
 只有当数列的总和等于 $m$ ，或者总和大于 $m$ 并且数列中每个数都相等且为 $m$ 的因子时无解。
 
-即当且仅当以下式子成立时，该数列无解：
+设数列总和为 $s$，即当且仅当以下式子成立时，该数列无解，其他情况均有解：
 
 $$
-\sum_{i=1}^{n}a_i=m \cup  \sum_{i=1}^{n}a_i>m  \cap \forall a_i~(1 \leq i < n),a_i=a_{i+1} \cap a_1 | m
+s=m \lor \left(s>m \land a_i=a_{i+1}~(1 \leq i < n) \land a_1 | m \right)
 $$
 
-其他情况均有解，只需要依次累加 $a_i$，当 $sum=m$ 的时候用不同于 $a_i$ 的其他数代替即可。 
+一个比较简单的方法是对数列进行排序，然后遍历数列并累加。若累加和等于 $m$，则将遍历过的部分逆序，并交换当前元素与数列末尾元素。注意当前元素因为刚刚的逆序已经是最小的元素了，我们这样做交换一定不会使得累加和变小，故只需做这一次交换即可。
 
 \section*{标程}
 
