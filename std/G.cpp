@@ -29,11 +29,7 @@ int main()
         {
             string word;
             cin>>word;
-            set_union(
-                uni.begin(), uni.end(),
-                mp[word].begin(), mp[word].end(),
-                back_inserter(tmp)
-            );
+            set_union(uni.begin(), uni.end(), mp[word].begin(), mp[word].end(), back_inserter(tmp));
             uni = tmp;
             tmp.clear();
         }

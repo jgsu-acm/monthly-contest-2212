@@ -1,12 +1,19 @@
 \documentclass{../cpct/ctsol}
 
-\title{xxxxxx}
-\date{yyyy 年 mm 月 dd 日}
+\title{ACM 算法实验室 2022 年 12 月月赛题解}
+\date{2022 年 12 月 4 日}
 
 \begin{document}
 
 \maketitle
-\addsolution{A+B Problem}{aaa}{模拟}
+\addsolution{Quento}{AgOH}{dfs}
+\addsolution{地铁 \textasciitilde 地铁 \textasciitilde}{Algor}{图的连通性}
+\addsolution{数列 \textasciitilde 数列 \textasciitilde}{Algor}{签到}
+\addsolution{布丁 \textasciitilde 布丁 \textasciitilde}{Algor}{贪心}
+\addsolution{排队 \textasciitilde 排队 \textasciitilde}{Algor}{逆序对}
+\addsolution{背包 \textasciitilde 背包 \textasciitilde}{Algor}{构造}
+\addsolution{Guesslang}{Zxilly}{模拟}
+\addsolution{聚会 \textasciitilde 聚会 \textasciitilde}{Algor}{二分答案}
 
 \section*{题目概览}
 
@@ -15,10 +22,69 @@
 \makesolution
 \section*{做法}
 
-\verb|cout|
+对于每个“Quento”棋盘格，从每个数字格为起点做 dfs，统计所有可能出现的结果，对于每个询问查询结果即可。
 
 \section*{标程}
 
 \std{A}
+
+\makesolution
+\section*{做法}
+
+\section*{标程}
+
+\std{B}
+
+\makesolution
+\section*{做法}
+
+\section*{标程}
+
+\std{C}
+
+\makesolution
+\section*{做法}
+
+\section*{标程}
+
+\std{D}
+
+\makesolution
+\section*{做法}
+
+\section*{标程}
+
+\std{E}
+
+\makesolution
+\section*{做法}
+
+\section*{标程}
+
+\std{F}
+
+\makesolution
+\section*{做法}
+
+统计每个可能出现的关键字的可能出现的语言集合，例如若 \texttt{C++} 语言中有关键字 \texttt{if} 和 \texttt{else}，\texttt{Java} 语言中有关键字 \texttt{if}，\texttt{final}，则关键字 \texttt{if} 可能出现的语言集合为 $\{\texttt{Python}, \texttt{Java}\}$。
+
+设一个单词 $w$ 的可能出现的语言集合为 $S_k$，则代码文件可能的语言即为：
+
+$$A = \bigcup\limits_{w \in \texttt{code}} S_w$$
+
+若 $A$ 为空集，输出 \texttt{Unknown}，否则输出 $A$ 中字典序最大的单词即可。
+
+求并集的可以使用 \lstinline{std::set_union} 方便地完成，当然也可以手写模拟。
+
+\section*{标程}
+
+\std{G}
+
+\makesolution
+\section*{做法}
+
+\section*{标程}
+
+\std{H}
 
 \end{document}
