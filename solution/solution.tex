@@ -31,12 +31,20 @@
 \makesolution
 \section*{做法}
 
+无向非连通图上判断给定两点是否连通。
+
+1.并查集做法：运用并查集在读入数据的同时 $merge(u_1,v_i)$ 最后只需判断 $find(s) == find(t)$ 即可。
+
+2.dfs做法：链式前向星或者邻接表存图，从给定两点中的任意一点开始dfs，同时记录 $vis$ 数组，最后只要判断另一点的 $vis$ 值是否为 $true$ 即可。
+
 \section*{标程}
 
 \std{B}
 
 \makesolution
 \section*{做法}
+
+签到题，如题意模拟即可。
 
 \section*{标程}
 
@@ -45,6 +53,8 @@
 \makesolution
 \section*{做法}
 
+贪心加模拟，尽量早吃甜度较大的布丁。
+
 \section*{标程}
 
 \std{D}
@@ -52,12 +62,28 @@
 \makesolution
 \section*{做法}
 
+给你一个数列求逆序对的数量。当 $i < j \cap a_i > a_j$ 时 $\{i,j\}$ 称为一个逆序对。
+
+归并排序模板简单改动，仅需在 $merge()$ 的时候判断当前是否产生逆序对。
+
 \section*{标程}
 
 \std{E}
 
 \makesolution
 \section*{做法}
+
+给出一个数列，要求你更改其顺序使得该数列没有任何一个前缀的和等于 $m$。
+
+只有当数列的总和等于 $m$ ，或者总和大于 $m$ 并且数列中每个数都相等且为 $m$ 的因子时无解。
+
+即当且仅当以下式子成立时，该数列无解：
+
+$$
+\sum_{i=1}^{n}a_i=m \cup  \sum_{i=1}^{n}a_i>m  \cap \forall a_i~(1 \leq i < n),a_i=a_{i+1} \cap a_1 | m
+$$
+
+其他情况均有解，只需要依次累加 $a_i$，当 $sum=m$ 的时候用不同于 $a_i$ 的其他数代替即可。 
 
 \section*{标程}
 
@@ -82,6 +108,18 @@ $$A = \bigcup\limits_{w \in \texttt{code}} S_w$$
 
 \makesolution
 \section*{做法}
+
+假设答案是 $ans$，对于任何 $i \leq ans$ 来说，都有可能正好邀请 $i$ 人，对于任何 $i > ans$ 来说，都不可能正好邀请 $i$ 人。
+
+因为把 $1$ 个人从聚会中移除并不会使任何人不开心。
+
+所以如果我们能邀请 $p_1,p_2,\dots,p_k$，我们也能邀请$p_1,p_2,\dots,p_{k-1}$。
+
+因此可以用二分答案来找到有可能正好邀请到的最大的人数。
+
+假设我们想邀请 $x$ 人，如果有 $i$ 个人比某人 $v$ 穷，就有 $x-1-i$ 人比他富。
+
+$i \leq b_v,x-1-i \leq a_v$ 所以只需要某人 $v$ 满足 $x-1-a_v \leq i \leq b_v$ 即可被邀请。
 
 \section*{标程}
 
